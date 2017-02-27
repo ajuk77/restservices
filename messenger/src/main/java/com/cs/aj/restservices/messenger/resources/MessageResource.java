@@ -1,5 +1,6 @@
 package com.cs.aj.restservices.messenger.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -14,12 +15,11 @@ import com.cs.aj.restservices.messenger.service.MessageService;
 public class MessageResource {
 
 	MessageService messageService = new MessageService();
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Message> getMessages(){
+	public List<Message> getMessages() {
 		return messageService.getAllMessages();
 	}
-	
-	
+
 }
