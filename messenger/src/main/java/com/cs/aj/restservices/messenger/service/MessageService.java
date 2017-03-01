@@ -12,11 +12,7 @@ public class MessageService {
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
 
 	public MessageService() {
-		Message message1 = new Message(1, "Hello AJ", "AJ");
-		Message message2 = new Message(2, "Hello Harshu", "AJ");
-
-		messages.put(message1.getId(), message1);
-		messages.put(message2.getId(), message2);
+	
 	}
 
 	public List<Message> getAllMessages() {
@@ -37,8 +33,13 @@ public class MessageService {
 		if (messageToUpdate.getId() <= 0) {
 			return null;
 		}
-		messages.put(messageToUpdate.getId(), messageToUpdate);
-		return messageToUpdate;
+		Message obj = messages.get(messageToUpdate.getId());
+		System.out.println("Object found " + obj);
+		obj.setAuthor(messageToUpdate.getAuthor());
+		obj.setMessage(messageToUpdate.getMessage());
+		
+		messages.put(messageToUpdate.getId(), obj);
+		return messages.get(messageToUpdate.getId());
 	}
 
 	public Message removeMessage(long id) {
